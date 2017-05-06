@@ -14,10 +14,13 @@ namespace SystemWebowy.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //Kategoria kategoria = new Kategoria { NazwaKategorii = "Torty" };
-            //db.Kategorie.Add(kategoria);
-            //db.SaveChanges();
-            return View();
+            return View(db.Kategorie.ToList());
+        }
+        [ChildActionOnly]
+        public ActionResult KategorieMenu()
+        {
+            var kategorie = db.Kategorie.ToList();
+            return PartialView("_KategorieMenu", kategorie);
         }
     }
 }

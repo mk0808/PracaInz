@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Lista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="col-lg-3" style="background-color:lightgrey">
+        <br />
+        @Html.Action("KategorieFiltr")
+        @Html.Action("SmakiFiltr")
+        <div class="text-center"><button class="btn btn-default btn-block" type="submit"><i class="fa fa-filter"></i> Filtruj</button></div>
+        <br />
+    </div>
+    @Html.Partial("_ProduktyList")
+</div>
+

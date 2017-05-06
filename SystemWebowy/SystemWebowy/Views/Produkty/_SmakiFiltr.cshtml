@@ -1,0 +1,18 @@
+﻿@model IEnumerable<SystemWebowy.Models.Smak>
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading"><i class="fa fa-filter"></i> Smaki</div>
+        <div class="panel-body">
+            @foreach (var item in Model)
+            {
+                <label>
+                    <input type="checkbox" value="@item.SmakId" />
+                    @item.NazwaSmaku
+                </label><br />
+
+            }
+           
+        </div>
+    </div>
+</div>
+
