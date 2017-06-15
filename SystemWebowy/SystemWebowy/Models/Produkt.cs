@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -18,7 +19,7 @@ namespace SystemWebowy.Models
         public decimal CenaL { get; set; }
         public virtual ICollection<Zdjecie> Zdjecia { get; set; }
         public virtual Kategoria Kategoria { get; set; }
-        public virtual Smak Samk { get; set; }
+        public virtual Smak Smak { get; set; }
 
     }
 }

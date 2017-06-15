@@ -1,0 +1,20 @@
+﻿@model IEnumerable<SystemWebowy.Models.Kategoria>
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading"><i class="fa fa-filter"></i> Kategorie</div>
+        <div class="panel-body">
+              @foreach (var item in Model)
+                {
+                <label>
+                    <input type="checkbox" value="@item.KategoriaId"/>
+                    @item.NazwaKategorii
+                </label><br />
+            
+            }
+        </div>
+    </div>
+</div>
+
+
+
+

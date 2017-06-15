@@ -1,18 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<SystemWebowy.Models.Kategoria>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-inverse bg-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Grupowanie "marki" i przycisku rozwijania mobilnego menu -->
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -21,30 +21,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><i class="fa fa-home fa-fw"></i> Home</a>
+                <a class="navbar-brand" href="#"><i class="fa fa-user fa-fw"></i> Konto</a>
             </div>
 
-            <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-                <ul class="nav navbar-nav">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Konto</a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i> Mój koszyk</a></li>
-                </ul>
-                <form class="navbar-form bg-inverse navbar-right" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Szukaj">
-                    </div>
-                    <button type="submit" class="btn btn-default">Szukaj</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-    <!-- Logo -->
-    <center><img src="~/Img/images.png"></center>
-    
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <!-- Grupowanie "marki" i przycisku rozwijania mobilnego menu (coś nie działa)-->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                @Html.Partial("_Konto")
+                <div class="col-sm-3 col-md-3 nav navbar-right">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control btn btn-default" placeholder="Search" name="q">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.navbar-collapse -->
+           
+        </nav>
+    </div>
+    <div class="container-fluid">
+        <nav class="navbar navbar-default " role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3">
                     <span class="sr-only">Toggle navigation</span>
@@ -54,52 +53,70 @@
                 </button>
                 <a class="navbar-brand" href="#"><i class="fa fa-home fa-fw"></i>Start</a>
             </div>
-            <!-- Menu główne -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
                 <ul class="nav navbar-nav">
-                    <li><a href="#"><i class="fa fa-home fa-lg"></i><span class="sr-only">(current)</span></a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kategorie<span class="caret"></span></a>
+                    @Html.Action("KategorieMenu")
+                    @*<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-birthday-cake fa-fw"></i> Kategorie</a>
+                           
                         <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
+                            @foreach (var item in new SystemWebowy.DataAccessLayer.CukierniaDBContext().Kategorie.ToList())
+                            {
+                                <li><a href="#">@item.NazwaKategorii</a></li>
+                            }
                         </ul>
-                    </li>
-                    <li><a href="#">Kreator</a></li>
+                    </li>*@
+
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Informacje<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-paint-brush fa-fw"></i> Kreator produktów</a>
                     </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-info fa-fw"></i> Informacje</a>
+                    </li>
+
+
                 </ul>
-            </div>
-         </div>
-    </nav> 
-
-
-
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Magdalena Kudyba</p>
-        </footer>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+        </div>
+    <!--layout-->
+    <div class="page-header">
+        <div class="container">
+            <h1><i class="fa fa-birthday-cake" aria-hidden="true"></i> Cukiernia internetowa</h1>
+            <p class="lead">
+                <small>Zamów pyszne torty i inne słodkości z dostawą lub odbiorem osobistym!</small>
+            </p>
+        </div>
     </div>
-
+    <!--/.layout-->
+    <div class="container-fluid body-content">
+        @RenderBody()
+    </div>
+   
+    <!----------- Footer ------------>
+    <footer class="footer-bs">
+        <div class="row">
+            <div class="col-md-3 footer-brand animated fadeInLeft">
+                <h2>Informacje</h2>
+                <p>System zrobiony na potrzeby pracy inżynierskiej</p>
+                <p>© @DateTime.Now.Year Magdalena Kudyba</p>
+            </div>
+            <div class="col-md-3 footer-nav animated fadeInUp">
+                <h2>Kontakt</h2>
+                    <p><i class="fa fa-globe" aria-hidden="true"></i>Wybrzeże Wyspiańskiego 27</p>
+                    <p>50-370 Wrocław</p>
+                    <p><i class="fa fa-mobile" aria-hidden="true"></i> +48 697 165 999</p>
+                    <p><i class="fa fa-envelope" aria-hidden="true"></i> 204393@student.pwr.edu.pl</p>
+               
+          
+            </div>
+        </div>
+    </footer>
+    <!----------- /Footer ------------>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
 </body>
 </html>

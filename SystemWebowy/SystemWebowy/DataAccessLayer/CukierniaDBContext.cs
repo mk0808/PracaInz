@@ -13,6 +13,10 @@ namespace SystemWebowy.DataAccessLayer
         public CukierniaDBContext() : base("name = CukierniaDBContext")
         {
         }
+        public static CukierniaDBContext Create()
+        {
+            return new CukierniaDBContext();
+        }
 
         public DbSet<Dostawa> Dostawy { get; set; }
         public DbSet<Kategoria> Kategorie { get; set; }
